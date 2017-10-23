@@ -1,7 +1,7 @@
 const router = require('koa-router')();
 
 router.get('/', async(ctx, next) => {
-    ctx.body = "This is index.";
+    await ctx.render('index.html')
 })
 
 module.exports = router;
