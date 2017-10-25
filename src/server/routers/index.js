@@ -1,7 +1,13 @@
+/**
+ * 整合所有子路由
+ */
+
 const router = require('koa-router')();
 
-router.get('/', async(ctx, next) => {
-    await ctx.render('index.html')
-})
+import home from './home';
+import admin from './admin';
+
+router.use('/', home.routes(), home.allowedMethods());
+router.use('/admin', admin.routes(), admin.allowedMethods());
 
 module.exports = router;

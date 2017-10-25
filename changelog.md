@@ -18,4 +18,15 @@
 
 2017.10.23
 ====
-1. 加入了babel和webpack，preset用的es2015，可以正常运行。
+1. 加入了babel和webpack，preset用的es2015，可以正常运行;
+2. 碰到一个`module.js Cannot find module 'source-map-support'`的问题，居然要`rm -rf node_modules; npm install`来解决，这是为什么。。。npm老出问题？
+3. 使用element-react 和 element-theme-default需要在webpack config里设置css loader, style loader和url loader（这是个啥？）
+4. 目前bundle.js大小为7.5M（不加css为7M），怎么缩小？怎么把css和js分开来？
+5. ES6 语法下，类的每个成员函数在执行时的 this 并不是和类实例自动绑定的
+
+2017.10.25
+====
+1. sequelize最基本的关系终于搞清楚了，user和post是一对多，post和tag是多对多关系
+2. bodyparser一定要在route之前添加进中间件栈！ 为什么？
+3. 用的fetch api来提交请求
+4. 学习react-router用法，前端路由控制
