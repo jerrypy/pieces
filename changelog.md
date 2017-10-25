@@ -30,3 +30,4 @@
 2. bodyparser一定要在route之前添加进中间件栈！ 为什么？
 3. 用的fetch api来提交请求
 4. 学习react-router用法，前端路由控制
+5. 使用了React-router-dom v4的BrowerRouter来进行前端路由。对前后端路由的区别有了一定的了解：前端路由就是不发起请求，通过url的变换了改变前端组件的渲染；而后端路由在这里完全只取一个api区分作用，如果用上了graphQL，是不是一个api就够了？
