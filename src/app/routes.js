@@ -4,17 +4,48 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-import { Menu } from 'element-react';
+import { Menu, Icon } from 'antd';
 import Login from './login';
+
+class Nav extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            current: 'home'
+        }
+    }
+    
+
+    handleClick(e) {
+        this.setState({
+            current: e.key,
+        });
+    }
+
+    render() {
+        return (
+        <Menu
+            onClick={this.handleClick.bind(this)}
+            selectedKeys={[this.state.current]}
+            mode="horizontal"
+        >
+            <Menu.Item key="home">
+                <Link to="/">主页</Link>
+            </Menu.Item>
+            <Menu.Item key="login">
+                <Link to="/login">登录</Link>
+            </Menu.Item>
+        </Menu>
+    
+    
+    )} 
+}
 
 const Routes = () => (
     <Router>
-      <div>
-        <Menu theme="light" defaultActive="1" className="el-menu-demo" mode="horizontal">
-            <Menu.Item index="1"><Link to="/">主页</Link></Menu.Item>
-            <Menu.Item index="2"><Link to="/login">登录</Link></Menu.Item>
-        </Menu>
-  
+        <div>
+        <Nav />
+      
         <Route exact path="/" component={Home}/>
         <Route path="/login" component={Login}/>
       </div>

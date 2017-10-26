@@ -1,54 +1,54 @@
 import React from 'react';
 
-import { Form, Button, Input } from 'element-react';
+import { Form, Button, Input, Icon } from 'antd';
 
 class LoginForm extends React.Component {
-    constructor(props) {
-        super(props);
 
-        this.state = {
-            form: {
-                username: '',
-                password: ''
-            }
-        }
-    }
-
-    onSubmit(e) {
+    handleSubmit(e) {
         e.preventDefault();
-        this.postForm();
-
+        this.props.form.validateFields((err, values) => {
+            if (!err) {
+              console.log('Received values of form: ', values);
+              this.postForm(values);
+            }
+          });
     }
 
-    async postForm() {
+    async postForm(values) {
         let res = await fetch("/admin/login", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(this.state.form)
+            body: JSON.stringify(values)
         });
 
         let resJson = await res.json();
         console.log(resJson);
     }
 
-    onChange(key, value) {
-        this.state.form[key] = value;
-        this.forceUpdate();
-    }
-
     render() {
+        const { getFieldDecorator } = this.props.form;
         return (
-            <Form model={this.state.form} labelWidth="80" onSubmit={this.onSubmit.bind(this)}>
-                <Form.Item label="用户名">
-                    <Input value={this.state.form.username} onChange={this.onChange.bind(this, 'username')} />
-                </Form.Item>
-                <Form.Item label="密码">
-                    <Input value={this.state.form.password} type="password" onChange={this.onChange.bind(this, 'password')} />
+            <Form onSubmit={this.handleSubmit.bind(this)} className="login-form" style={{maxWidth: 300}}>
+                <Form.Item>
+                    {getFieldDecorator('username', {
+                        rules: [{ required: true, message: 'Please input your username!' }],
+                    })(
+                        <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="Username" />
+                    )}
                 </Form.Item>
                 <Form.Item>
-                    <Button type="primary" nativeType="submit">登录</Button>
+                {getFieldDecorator('password', {
+                    rules: [{ required: true, message: 'Please input your Password!' }],
+                })(
+                    <Input prefix={<Icon type="lock" style={{ fontSize: 13 }} />} type="password" placeholder="Password" />
+                )}
+                </Form.Item>
+                <Form.Item>
+                <Button type="primary" htmlType="submit" className="login-form-button">
+                    Log in
+                </Button>
                 </Form.Item>
             </Form>
         )
@@ -56,4 +56,6 @@ class LoginForm extends React.Component {
 
 }
 
-export default LoginForm;
+const WrappedNormalLoginForm = Form.create()(LoginForm);
+
+export default WrappedNormalLoginForm;
