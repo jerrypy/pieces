@@ -37,3 +37,9 @@
 1. 更换ant design，ant desing文档示例是用typescript写的。。很坑。。编译之后13.4M
 2. 用react框架的时候，如何优雅地写css?
 3. 每次都要手动重启，是时候研究一下webpack-dev-server了
+4. 目前login发送请求的逻辑是放在是LoginForm这个Component的模块里的，不知道这样是否合适？开始学习Flux(Redux)
+
+2017.10.27
+====
+1. 跟着《深入浅出React和Redux》来学习Flux的概念，这本书讲的不错，对于我这种初学者来说还是比较通俗易懂的，看到了第四章利用react-redux完成了一个最基本的todo，一些概念还是模棱两可，所有打算从零开始自己实现一个，不一行一行地写代码很难理解，所以博客的进度需要暂缓；
+2. 跟着官方文档把babel, webpack仔细看了一下，研究了webpack的一些常用plugi，用上了webpack-dev-server。 目前的每次更改浏览器会刷新，这样react之前的所有状态就没有了，有解决方法就是用react-hot-loader，但是这个方法要修改app的代码，暂时不考虑，待研究一下如何在生产环境中使用；

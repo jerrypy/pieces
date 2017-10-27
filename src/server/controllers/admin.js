@@ -8,26 +8,21 @@ function password(pass) {
 }
 
 const login = async (ctx, next) => {
-    if (ctx.method == 'GET') {
-        await ctx.render('index.html');
-    } else {
-        let postData = ctx.request.body;
-        let user = await db['user'].findOne({
-            where: {
-                username: postData['username'],
-                password: password(postData['password'])
-            }
-        });
-        if (user !== null) {
-            ctx.body = JSON.stringify(
-                {status: 'ok'}
-            )
-        } else {
-            ctx.body = JSON.stringify(
-                {status: 'failed'}
-            )
+    let postData = ctx.request.body;
+    let user = await db['user'].findOne({
+        where: {
+            username: postData['username'],
+            password: password(postData['password'])
         }
-        
+    });
+    if (user !== null) {
+        ctx.body = JSON.stringify(
+            {status: 'ok'}
+        )
+    } else {
+        ctx.body = JSON.stringify(
+            {status: 'failed'}
+        )
     }
 };
 
