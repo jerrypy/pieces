@@ -1,0 +1,11 @@
+// 将设置放入此文件中以覆盖默认设置
+{
+    "editor.fontSize": 14,
+    "todohighlight.keywords": ["TODO", "FIXME"],
+    // 禁止上传使用数据至Microsoft
+    "telemetry.enableTelemetry": false,
+    "vsicons.dontShowNewVersionMessage": true,
+    "workbench.colorTheme": "One Monokai",
+    "workbench.iconTheme": "vscode-icons",
+    "typescript.check.npmIsInstalled": false
+}
