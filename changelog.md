@@ -34,7 +34,7 @@
 
 2017.10.26
 ====
-1. 更换ant design，~~ant desing文档示例是用typescript写的。。很坑。。~~编译之后13.4M
+1. 更换ant design，~~ant desing文档示例是用typescript写的  很坑~~。。编译之后13.4M
 2. 用react框架的时候，如何优雅地写css?
 3. 每次都要手动重启，是时候研究一下webpack-dev-server了
 4. 目前login发送请求的逻辑是放在是LoginForm这个Component的模块里的，不知道这样是否合适？开始学习Flux(Redux)
