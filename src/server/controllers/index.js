@@ -2,6 +2,6 @@
  * 主页控制器
  */
 
-module.exports = async ctx => {
-    await ctx.render('index.html');
-}
+module.exports = async (ctx) => {
+  ctx.body = 'hello world 123';
+};

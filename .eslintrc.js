@@ -1,3 +1,7 @@
 module.exports = {
-    "extends": "google"
+    "extends": "airbnb",
+    "globals": {
+      "document": true,
+      "fetch": true
+    }
 };

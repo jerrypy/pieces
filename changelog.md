@@ -47,3 +47,8 @@
 2017.11.2
 ====
 1. ant design文档用的是一个还在stage 2的提案，[class properties](https://babeljs.io/docs/plugins/transform-class-properties/)，babel添加这个plugin就可以使用了；
+
+2017.11.10
+====
+1. 终于把《深入浅出React和Redux》看完了（优化和扩展、动画没有细看），项目结构又改了一遍，用上了react-redux；
+2. 发现一个问题：后端json过来的字段，前端是要严格遵守的，前后端分离接口文档还是要清楚；

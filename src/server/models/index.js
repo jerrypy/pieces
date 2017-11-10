@@ -13,22 +13,22 @@ const db = {};
  * model都保存到db中
  */
 fs
-    .readdirSync(__dirname)
-    .filter(file => {
-        return (file.indexOf('.') !== 0) && (file !== 'index.js');
-    })
-    .forEach(file => {
-        let model = sequelize.import(path.join(__dirname, file));
-        db[model.name] = model;
-    });
+  .readdirSync(__dirname)
+  .filter(file => {
+    return (file.indexOf('.') !== 0) && (file !== 'index.js');
+  })
+  .forEach(file => {
+    let model = sequelize.import(path.join(__dirname, file));
+    db[model.name] = model;
+  });
 
 /**
  * 建立模型间的关系
  */
 Object.keys(db).forEach(moduleName => {
-    if ('associate' in db[moduleName]) {
-        db[moduleName].associate(db);
-    }
+  if ('associate' in db[moduleName]) {
+    db[moduleName].associate(db);
+  }
 });
 
 module.exports = db;
