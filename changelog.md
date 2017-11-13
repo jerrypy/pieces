@@ -56,3 +56,4 @@
 2017.11.13
 ====
 1. 用上了react-router-v4，遇到了很多问题：1.完全不知道react-router-redux是干嘛的，所以没用它；2. home和about页面都用到了nav，切换的时候怎么可以让nav不重新render呢？ 每次切换到home都会发起获取所有post的请求，有办法优化吗？
+2. nav提出来放在routes最上层，这样切换页面就不会造成nav重新render了；
