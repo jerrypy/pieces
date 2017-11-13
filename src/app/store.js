@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 
 import thunkMiddleware from 'redux-thunk';
 
+// import { middleware as routerMiddleware } from './routes';
 import { allPostsReducer } from './components/post';
 
 const reducer = combineReducers({
@@ -10,6 +11,6 @@ const reducer = combineReducers({
 
 const middlewares = [thunkMiddleware];
 
-const storeEnhancers = compose(applyMiddleware(...middlewares),);
+const storeEnhancers = compose(applyMiddleware(...middlewares) );
 
 export default createStore(reducer, {}, storeEnhancers);
