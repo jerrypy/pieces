@@ -57,3 +57,9 @@
 ====
 1. 用上了react-router-v4，遇到了很多问题：1.完全不知道react-router-redux是干嘛的，所以没用它；2. home和about页面都用到了nav，切换的时候怎么可以让nav不重新render呢？ 每次切换到home都会发起获取所有post的请求，有办法优化吗？
 2. nav提出来放在routes最上层，这样切换页面就不会造成nav重新render了；
+
+2017.11.14
+====
+1. react-router的route、redirect等，不是一定要放在router里，可以放在任何地方；
+2. 加入了登录和post内容的页面，post内容的state还需要设计；
+3. eslint不能识别class property特性，加入了plugin还是报错，不知道怎么改；

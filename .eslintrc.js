@@ -2,6 +2,10 @@ module.exports = {
     "extends": "airbnb",
     "globals": {
       "document": true,
-      "fetch": true
-    }
+      "fetch": true,
+      "window": true,
+    },
+    "plugins": [
+      "class-property"
+    ],
 };

@@ -1,5 +1,6 @@
 import * as actions from './actions';
-import { allPostsReducer } from './reducers';
+import { allPostsReducer, singlePostReducer } from './reducers';
 import PostList from './postList';
+import PostContent from './postContent';
 
-export { actions, allPostsReducer, PostList };
+export { actions, allPostsReducer, singlePostReducer, PostList, PostContent };

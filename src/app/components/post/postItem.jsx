@@ -1,11 +1,12 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const PostItem = ({
-  postId, postTitle, postDate, postTags, postAuthor,
+  postId, postTitle, customLink, postDate, postTags, postAuthor,
 }) => (
   <article>
-    <h1>{postTitle}</h1>
+    <h1><Link to={customLink}>{postTitle}</Link></h1>
     <time>
       <span className="post-month">{postDate.month}</span>
       <span className="post-day">{postDate.day}</span>

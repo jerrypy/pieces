@@ -1,24 +1,30 @@
 import React from 'react';
 import createHistory from 'history/createBrowserHistory';
-import { Router, Route } from 'react-router-dom';
-import { routerMiddleware } from 'react-router-redux';
+import { Route, Switch } from 'react-router-dom';
+import { routerMiddleware, ConnectedRouter } from 'react-router-redux';
 
 import { Nav } from './components/header';
 import Home from './pages/home';
 import About from './pages/about';
+import Login from './pages/login';
+import PostContent from './pages/post';
 
 const history = createHistory();
 
 const middleware = routerMiddleware(history);
 
 const Routes = () => (
-  <Router history={history}>
+  <ConnectedRouter history={history}>
     <div>
       <Nav />
-      <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/login" component={Login} />
+        <Route path="/:customLink" component={PostContent} />
+      </Switch>
     </div>
-  </Router>
+  </ConnectedRouter>
 );
 
 export { middleware, Routes };

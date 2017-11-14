@@ -23,7 +23,14 @@ module.exports = (sequelize, DataTypes) => {
       validate: { notEmpty: true },
     },
 
-    // 文章类型：0-普通文章，1-微博
+    // 自定义链接
+    // TODO: 这个必须要URL SAFE，需要自定义一个validator，而且不能重复，长度限制在url范围以内
+    custom_link: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: { notEmpty: true },
+    },
+    // 文章类型：0-普通文章，1-关于我，2-roar
     type: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
@@ -31,17 +38,22 @@ module.exports = (sequelize, DataTypes) => {
 
   }, {
     /**
-       * scopes定义
-       */
+     * scopes定义
+     */
     scopes: {
       normalPost: {
         where: {
           type: 0,
         },
       },
-      weiboPost: {
+      aboutPost: {
         where: {
           type: 1,
+        },
+      },
+      roarPost: {
+        where: {
+          type: 2,
         },
       },
     },

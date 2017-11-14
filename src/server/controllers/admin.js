@@ -16,9 +16,9 @@ const login = async (ctx, next) => {
     },
   });
   if (user !== null) {
-    ctx.body = JSON.stringify({ status: 'ok' },);
+    ctx.body = JSON.stringify({ status: 'ok' });
   } else {
-    ctx.body = JSON.stringify({ status: 'failed' },);
+    ctx.body = JSON.stringify({ status: 'failed' });
   }
 };
 

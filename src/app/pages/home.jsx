@@ -3,7 +3,5 @@ import { PostList } from '../components/post';
 
 
 export default () => (
-  <div>
-    <PostList />
-  </div>
+  <PostList />
 );
