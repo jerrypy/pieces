@@ -68,3 +68,4 @@
 ====
 1. 开始增加后端db操作的controller，sequelize findAll返回的是meta数据，有很多额外字段，需要posts.map(post => post.toJSON()) 才能获取到原始数据；
 2. findAll include db.tag的时候，tag里会带有PostTag这个关联表的数据，如何不返回这个呢？
+3. sequelize timestamp返回的都是datetime的对象；
