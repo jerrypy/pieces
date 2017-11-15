@@ -14,7 +14,10 @@ const PostItem = ({
     </time>
     <footer>
       <span>
-        {'posted in '}
+        {'post in '}
+        {postTags.map(tag => (
+          <Link key={tag.id} to={`/tag/${tag.name}`}>{tag.name}</Link>
+        ))}
       </span>
     </footer>
   </article>
@@ -23,9 +26,10 @@ const PostItem = ({
 PostItem.propTypes = {
   postId: PropTypes.number.isRequired,
   postTitle: PropTypes.string.isRequired,
+  customLink: PropTypes.string.isRequired,
   postDate: PropTypes.object.isRequired,
   postTags: PropTypes.array.isRequired,
-  postAuthor: PropTypes.string.isRequired,
+  postAuthor: PropTypes.object.isRequired,
 };
 
 export default PostItem;

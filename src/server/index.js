@@ -1,5 +1,3 @@
-import path from 'path';
-
 import Koa from 'koa';
 import koa_static from 'koa-static';
 import views from 'koa-views';
@@ -7,7 +5,7 @@ import bodyparser from 'koa-bodyparser';
 import cors from '@koa/cors';
 
 import config from '../../config/default';
-import db from './models/index';
+import db from './models';
 
 const app = new Koa();
 
@@ -20,17 +18,12 @@ const app = new Koa();
 // });
 
 app.use(cors());
-// app.use(async (ctx, next) => {
-//   ctx.header('Access-Control-Allow-Origin', '*');
-//   ctx.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-//   next();
-// });
 app.use(bodyparser());
 
 /**
  * 加载路由
  */
-app.use(require('./routers/index').routes());
+app.use(require('./routers').routes());
 
 
 app.listen(config.app.port);

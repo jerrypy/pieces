@@ -23,12 +23,16 @@ module.exports = (sequelize, DataTypes) => {
       validate: { notEmpty: true },
     },
 
-    // 自定义链接
-    // TODO: 这个必须要URL SAFE，需要自定义一个validator，而且不能重复，长度限制在url范围以内
+    // TODO: 这个只有type为0才需要不为空
     custom_link: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: { notEmpty: true },
+      unique: true,
+      validate: {
+        notEmpty: true,
+        len: [2, 50],
+        is: ['^[a-zA-Z0-9-]+$', 'gi'],
+      },
     },
     // 文章类型：0-普通文章，1-关于我，2-roar
     type: {
