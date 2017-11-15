@@ -63,3 +63,8 @@
 1. react-router的route、redirect等，不是一定要放在router里，可以放在任何地方；
 2. 加入了登录和post内容的页面，post内容的state还需要设计；
 3. eslint不能识别class property特性，加入了plugin还是报错，不知道怎么改；
+
+2017.11.15
+====
+1. 开始增加后端db操作的controller，sequelize findAll返回的是meta数据，有很多额外字段，需要posts.map(post => post.toJSON()) 才能获取到原始数据；
+2. findAll include db.tag的时候，tag里会带有PostTag这个关联表的数据，如何不返回这个呢？
