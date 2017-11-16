@@ -1,10 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 
-import Sequelize from 'sequelize';
+import Sequelize, { Op } from 'sequelize';
 import config from '../../../config/default';
 
-const Op = Sequelize.Op;
 const sequelize = new Sequelize(
   config.db.DATABASE,
   config.db.USERNAME,
@@ -37,21 +36,20 @@ Object.keys(db).forEach((moduleName) => {
 async function mockDB() {
   // await sequelize.sync({ force: true });
   // const userJerry = await db.user.create({ username: 'jerrypy', password: 'swing4life' });
+  const user = await db.user.findOne({ where: { username: 'jerrypy' } });
+  const post = await db.post.create({
+    title: 'Nice to meet you',
+    content: 'This is a test post.',
+    summary: 'This is a test post.',
+    custom_link: 'nice-to-meet-you',
+    tags: [
+      { name: 'Test' },
+    ],
+  }, {
+    include: [db.tag],
+  });
 
-  // const post = await db.post.create({
-  //   title: 'Hello World!',
-  //   content: 'This is a test post.',
-  //   summary: 'This is a test post.',
-  //   custom_link: 'hello-world',
-  //   tags: [
-  //     { name: 'Life' },
-  //     { name: 'HelloWorld' },
-  //   ],
-  // }, {
-  //   include: [db.tag],
-  // });
-
-  // await post.setUser(userJerry);
+  await post.setUser(user);
   // const tag1 = await db.tag.create({ name: 'Life' });
   // const tag2 = await db.tag.create({ name: 'Hello World' });
   // const post1 = await db.post.create({
@@ -63,20 +61,9 @@ async function mockDB() {
 
   // await post1.setUser(userJerry);
   // await post1.addTags([tag1, tag2]);
-  db.post.scope('normalPost').findAll({
-    include: [{
-      model: db.tag,
-      attributes: ['id', 'name'],
-    }, {
-      model: db.user,
-      attributes: ['id', 'username'],
-    }],
-  }).then((posts) => {
-    console.log(JSON.stringify(posts));
-  });
 }
 
 // mockDB();
 
-
+db.sequelize = sequelize;
 module.exports = db;

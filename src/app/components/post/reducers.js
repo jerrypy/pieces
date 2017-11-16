@@ -17,13 +17,13 @@ const allPostsReducer = (state = [], action) => {
   }
 };
 
-const singlePostReducer = (state = [], action) => {
+const singlePostReducer = (state = {}, action) => {
   switch (action.type) {
     case FETCH_POST_STARTED: {
       return state;
     }
     case FETCH_POST_SUCCESS: {
-      return [...action.result];
+      return { ...action.result };
     }
     case FETCH_POST_FAILURE: {
       return state;

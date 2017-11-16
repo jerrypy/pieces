@@ -25,6 +25,9 @@ app.use(bodyparser());
  */
 app.use(require('./routers').routes());
 
+app.use(async (ctx) => {
+  ctx.body = '404 page';
+});
 
 app.listen(config.app.port);
 

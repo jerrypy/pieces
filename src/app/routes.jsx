@@ -5,7 +5,6 @@ import { routerMiddleware, ConnectedRouter } from 'react-router-redux';
 
 import { Nav } from './components/header';
 import Home from './pages/home';
-import About from './pages/about';
 import Login from './pages/login';
 import PostContent from './pages/post';
 
@@ -19,7 +18,6 @@ const Routes = () => (
       <Nav />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
         <Route path="/login" component={Login} />
         <Route path="/:customLink" component={PostContent} />
       </Switch>

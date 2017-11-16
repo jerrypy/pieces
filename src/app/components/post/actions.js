@@ -1,5 +1,6 @@
 import { FETCH_ALL_POSTS_STARTED, FETCH_ALL_POSTS_SUCCESS, FETCH_ALL_POSTS_FAILURE, FETCH_POST_STARTED, FETCH_POST_SUCCESS, FETCH_POST_FAILURE } from './actionTypes';
 
+// TODO: 同类型的action可以放在一个action creator函数里，简化代码
 export const fetchAllPostsStarted = () => ({
   type: FETCH_ALL_POSTS_STARTED,
 });
@@ -48,12 +49,12 @@ export const fetchPostFailure = error => ({
   error,
 });
 
-export const fetchPost = postType => (dispatch) => {
-  const getAllPostsApi = `http://localhost:3000/post?type=${postType}`;
+export const fetchPost = customLink => (dispatch) => {
+  const getPostApi = `http://localhost:3000/post/${customLink}`;
 
   dispatch(fetchPostStarted());
 
-  return fetch(getAllPostsApi).then((response) => {
+  return fetch(getPostApi).then((response) => {
     if (response.status !== 200) {
       throw new Error(`Fail to get response with status ${response.status}`);
     }
