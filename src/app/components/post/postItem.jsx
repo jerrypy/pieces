@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const PostItem = ({
-  postId, postTitle, customLink, postDate, postTags, postAuthor,
+  postTitle, customLink, postDate, postTags,
 }) => (
   <article>
     <h1><Link to={customLink}>{postTitle}</Link></h1>
@@ -16,6 +16,7 @@ const PostItem = ({
       <span>
         {'post in '}
         {postTags.map(tag => (
+          // FIXME: tag现在传过来的是id的数组，需要把整个tag内容取过来
           <Link key={tag.id} to={`/tag/${tag.name}`}>{tag.name}</Link>
         ))}
       </span>
@@ -24,12 +25,10 @@ const PostItem = ({
 );
 
 PostItem.propTypes = {
-  postId: PropTypes.number.isRequired,
   postTitle: PropTypes.string.isRequired,
   customLink: PropTypes.string.isRequired,
   postDate: PropTypes.object.isRequired,
   postTags: PropTypes.array.isRequired,
-  postAuthor: PropTypes.object.isRequired,
 };
 
 export default PostItem;

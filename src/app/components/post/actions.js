@@ -1,3 +1,5 @@
+import { normalize } from 'normalizr';
+import postListSchema from '../../schema';
 import { FETCH_ALL_POSTS_STARTED, FETCH_ALL_POSTS_SUCCESS, FETCH_ALL_POSTS_FAILURE, FETCH_POST_STARTED, FETCH_POST_SUCCESS, FETCH_POST_FAILURE } from './actionTypes';
 
 // TODO: 同类型的action可以放在一个action creator函数里，简化代码
@@ -26,7 +28,7 @@ export const fetchAllPosts = postType => (dispatch) => {
     }
 
     response.json().then((responseJson) => {
-      dispatch(fetchAllPostsSuccess(responseJson));
+      dispatch(fetchAllPostsSuccess(normalize(responseJson, postListSchema)));
     }).catch((error) => {
       dispatch(fetchAllPostsFailure(error));
     });

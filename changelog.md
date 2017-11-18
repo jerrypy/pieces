@@ -74,3 +74,8 @@
 ====
 1. about其实也是post的一种，所以没有必要用一个单独的页面，按post的逻辑实现即可；
 2. connect的component 需要外层加上withRouter ，不然不能获取到match这些Props，这个withRouter起了什么作用？
+
+2017.11.18
+====
+1. mapStateToProps中获取到的state和redux-thunk中action获取的getState 都是直接获得的全局的state，不是reducer分配之后的，这应该为操作其它模块的state提供了可能；
+2. postContent在store中的存储逻辑仍需要设计；

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Routes } from './routes';
 import store from './store';
+import aa from './schema';
 
 ReactDOM.render(
   <Provider store={store}>
